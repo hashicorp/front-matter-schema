@@ -19,7 +19,7 @@ const filesInDirectories = (files, directories) =>
 async function action() {
   const files = core.getInput("files", { required: true });
   const directories = core.getMultilineInput("directories", { required: true });
-  const schema = core.getInput("schema", { required: true });
+  const schema = JSON.parse(core.getInput("schema", { required: true }));
 
   // Check that the modified file is in a watched directory
   if (files.length && filesInDirectories(files,directories)) {
@@ -31,7 +31,7 @@ async function action() {
 
       // Check the Markdown against the schema and return any errors
       core.notice(`Testing Markdown schema...`);
-      const { data, content, errors } = frontmatter(markdown,{JSON.parse(schema),target});
+      const { data, content, errors } = frontmatter(markdown,{schema,target});
 
       if (errors && errors.length > 0) {
         console.log(errors);
