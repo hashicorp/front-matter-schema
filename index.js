@@ -1,6 +1,6 @@
 const core = require("@actions/core");
 const slugify = require("slugify");
-const frontmatter = require('@github-docs/frontmatter')
+const frontmatter = require('@github-docs/frontmatter');
 const fs = require("fs").promises;
 
 /**
@@ -41,7 +41,7 @@ async function action() {
 
       // Check the Markdown against the schema and return any errors
       core.notice(`Testing Markdown schema...`);
-      const { data, content, errors } = frontmatter(markdown,{schema,target})
+      const { data, content, errors } = frontmatter(markdown,{schema,target});
 
       if (errors && errors.length > 0) {
         console.log(errors);
@@ -55,6 +55,7 @@ async function action() {
       }
     }
   }
+}
 
 if (require.main === module) {
   action();
