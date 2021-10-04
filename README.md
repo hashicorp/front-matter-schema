@@ -1,4 +1,4 @@
-# Front Down Schema Checker
+# Front Matter Schema Checker
 
 This Github Action checks the schema of YAML front matter.
 
