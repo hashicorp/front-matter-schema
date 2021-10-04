@@ -23,6 +23,9 @@ async function action() {
   // Check that the modified file is in a watched directory
   if (files.length && filesInDirectories(files,directories)) {
     for (const [target] of files.split(",")) {
+      core.notice(`Loading file ${target}...`);
+      console.log(target);
+
       // Load markdown file as string
       const markdown = (await fs.readFile(target)).toString();
 
