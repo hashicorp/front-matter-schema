@@ -22,8 +22,11 @@ async function action() {
 
   // Check that the modified file is in a watched directory
   if (files.length && filesInDirectories(files,directories)) {
-    for (const [target] of files) {
+    for (const [target] of files.split(",")) {
+      // Load markdown file as string
       const markdown = (await fs.readFile(target)).toString();
+
+      // Validation schema
       // https://github.com/flatiron/revalidator
       const schema = {
         properties: {
