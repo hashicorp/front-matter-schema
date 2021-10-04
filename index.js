@@ -24,7 +24,6 @@ async function action() {
   if (files.length && filesInDirectories(files,directories)) {
     for (const target of files.split(",")) {
       core.notice(`Loading file ${target}...`);
-      console.log(target);
 
       // Load markdown file as string
       const markdown = (await fs.readFile(target)).toString();
@@ -57,7 +56,7 @@ async function action() {
 
       // Set the output of the action to be the metadata
       for (let k in data) {
-        core.setOutput(slugify(k, { lower: true, strict: true }), parsed.data[k]);
+        core.setOutput(slugify(k, { lower: true, strict: true }), data[k]);
       }
     }
   }
