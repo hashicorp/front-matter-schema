@@ -18,7 +18,7 @@ const filesInDirectories = (files, directories) =>
 
 async function action() {
   const files = core.getInput("files", { required: true });
-  const directories = core.getInput("directories", { required: true });
+  const directories = core.getMultilineInput("directories", { required: true });
 
   // Check that the modified file is in a watched directory
   if (files.length && filesInDirectories(files,directories)) {
