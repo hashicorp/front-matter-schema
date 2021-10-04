@@ -35,7 +35,7 @@ async function action() {
 
       if (errors && errors.length > 0) {
         console.log(errors);
-        core.error(JSON.stringify(errors));
+        core.error(errors[0].message);
         core.setFailed(JSON.stringify(errors));
       }
 
