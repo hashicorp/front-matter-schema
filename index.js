@@ -36,11 +36,6 @@ async function action() {
             type: 'string',
             required: true
           },
-          meaning_of_life: {
-            type: 'number',
-            minimum: 40,
-            maximum: 50
-          }
         }
       }
 
