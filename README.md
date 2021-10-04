@@ -5,7 +5,7 @@ This Github Action checks the schema of YAML front matter.
 ## Usage
 
 ```yaml
- ---
+---
  name: Check Front Matter
  on: [push]
 
@@ -18,16 +18,25 @@ This Github Action checks the schema of YAML front matter.
            fetch-depth: 0
        - name: Get changed files
          id: changed-files
-         uses: actions/changed-files@v1.1.3
+         uses: tj-actions/changed-files@v1.1.3
+         with:
+           separator: ","
        - name: Front Matter
          id: lint
-         uses: hashicorp/font-matter-schema@main
+         uses: hashicorp/front-matter-schema@main
          with:
            files: ${{ steps.changed-files.outputs.all_modified_files }}
            directories: |
              items
+           schema: |
+             {
+               "properties": {
+                   "title": {
+                      "type": "string",
+                      "required": true
+                 }
+               }
+             }
 ```
 
-# TODO:
-
-+ Add schema as input
+> Given Github Actions not supporting multi-dimensional inputs like hashes, I'm just passing the `schema` in as raw JSON. This could however be the output of another step as well. 
