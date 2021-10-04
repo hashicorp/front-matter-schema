@@ -19,6 +19,7 @@ const filesInDirectories = (files, directories) =>
 async function action() {
   const files = core.getInput("files", { required: true });
   const directories = core.getMultilineInput("directories", { required: true });
+  const schema = core.getInput("schema", { required: true });
 
   // Check that the modified file is in a watched directory
   if (files.length && filesInDirectories(files,directories)) {
@@ -28,20 +29,9 @@ async function action() {
       // Load markdown file as string
       const markdown = (await fs.readFile(target)).toString();
 
-      // Validation schema
-      // https://github.com/flatiron/revalidator
-      const schema = {
-        properties: {
-          title: {
-            type: 'string',
-            required: true
-          },
-        }
-      }
-
       // Check the Markdown against the schema and return any errors
       core.notice(`Testing Markdown schema...`);
-      const { data, content, errors } = frontmatter(markdown,{schema,target});
+      const { data, content, errors } = frontmatter(markdown,{JSON.parse(schema),target});
 
       if (errors && errors.length > 0) {
         console.log(errors);

@@ -17,6 +17,9 @@ inputs:
   directories:
     description: The directories to watch for changes
     required: true
+  schema:
+    description: JSON encoded string of https://github.com/flatiron/revalidator
+    required: true
 
 outputs:
   changed:
