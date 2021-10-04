@@ -2,7 +2,7 @@ FROM node:slim
 
 WORKDIR / 
 # Copy the package.json and package-lock.json
-COPY package*.json .
+COPY package*.json / 
 
 # Allow generation inside docker
 RUN test -f package-lock.json || npm install
