@@ -24,13 +24,15 @@ async function action() {
   // Check that the modified file is in a watched directory
   if (files.length && filesInDirectories(files,directories)) {
     for (const target of files.split(",")) {
-      core.notice(`Loading file ${target}...`);
+      //core.notice(`Loading file ${target}...`);
+      console.log(`Loading file ${target}...`);
 
       // Load markdown file as string
       const markdown = (await fs.readFile(target)).toString();
 
       // Check the Markdown against the schema and return any errors
-      core.notice(`Testing Markdown schema...`);
+      //core.notice(`Testing Markdown schema...`);
+      console.log(`Testing Markdown schema...`);
       const { data, content, errors } = frontmatter(markdown,{schema,target});
 
       if (errors && errors.length > 0) {
