@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MIT
+
 ---
 name: Check Front Matter Schema
 description: Check changed files against markdown schema

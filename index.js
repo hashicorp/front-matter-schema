@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 const core = require("@actions/core");
 const slugify = require("slugify");
 const frontmatter = require('@github-docs/frontmatter');
