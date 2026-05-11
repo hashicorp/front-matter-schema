@@ -1,3 +1,7 @@
+/**
+ * Copyright IBM Corp. 2021, 2026
+ */
+
 const core = require("@actions/core");
 const slugify = require("slugify");
 const frontmatter = require('@github-docs/frontmatter');
